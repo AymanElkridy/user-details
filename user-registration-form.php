@@ -1,12 +1,12 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="/dashboard/style.css">
+        <link rel="stylesheet" href="/style/style.css">
         <title>User Registration Form</title>
     </head>
     <body>
         <h1 class="formH">User Registration Form</h1>
-        <form class="theForm" method="post" action="<?php $_PHP_SELF ?>">
+        <form class="theForm" method="post" action="<?=($_SERVER['PHP_SELF'])?>">
             <div class="row mb-3">
                 <label for="Name" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
@@ -91,7 +91,7 @@
         if (isset($_POST['mailStatus'])) {$mailStatus = "yes";}
         if (!isset($_POST['mailStatus'])) {$mailStatus = "no";}
 
-        if (($_POST['name']) && ($_POST['email']) && ($_POST['gender'])) {
+        if (($_POST['name']) && ($_POST['email']) && (isset($_POST['gender']))) {
             $sql = 'INSERT INTO userDetails(userName, userEmail, userGender, userMailStatus)
             VALUES ("'. $_POST['name']. '","'. $_POST['email']. '","'. $gender. '","'. $mailStatus. '")';
             $requestDone = true;
